@@ -1,0 +1,6 @@
+{
+  "aps": {
+    "alert": "Hello"
+  },
+  "Simulator Target Bundle": "com.abe.Notification"
+}

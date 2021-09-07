@@ -9,9 +9,17 @@ import SwiftUI
 
 @main
 struct NotificationApp: App {
+    // Create a deleate to start the app 
+    @UIApplicationDelegateAdaptor(AppDelegate.self)
+    private var appDelegate
+    
+    
     var body: some Scene {
         WindowGroup {
+            let vm = AuthViewModel()
             ContentView()
+                .environmentObject(vm)
+                .environment(\.locale, Locale(identifier: Locale.current.languageCode ?? "en"))
         }
     }
 }
