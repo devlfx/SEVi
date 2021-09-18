@@ -8,7 +8,10 @@
 import Foundation
 import Combine
 
-
+/**
+ Class used to store all API endpoints and configure it's requests. We use combine to expose publishers
+ and the restClient for request and decode the resposes when needed.
+ */
 struct ApiClient{
 
     public var decoder: JSONDecoder = {
@@ -70,6 +73,17 @@ struct ApiClient{
         
         guard let request = request else { return Fail(error: RequestError.badURL("Bad URL")).eraseToAnyPublisher() }
         return client.execute(request, decodingType: Stay?.self, queue: .main)
+    }
+    
+    
+    func getInform(informId:Int )-> AnyPublisher<Inform?,Error>{
+        let url = APIConfig.shared.host+"/inform/\(informId)"
+        let headers = commonHeaders(requiresAuth: true)
+        let builder = RequestBuilder(url: url, headers: headers, reqBody: nil, httpMethod: HTTPMethod.GET)
+        let request = builder.builURLRequest()
+        guard let request = request else { return Fail(error: RequestError.badURL("Bad URL")).eraseToAnyPublisher() }
+        return client.execute(request, decodingType: Inform?.self, queue: .main)
+        
     }
     
     

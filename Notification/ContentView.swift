@@ -18,7 +18,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            if let isSignedIn = viewModel.$isSignedIn {
+            if viewModel.isSignedIn {
                 PrincipalView()
             } else {
                 SignInView()
@@ -30,6 +30,7 @@ struct ContentView: View {
     
     
     private func checkToken(){
+        print("checando token")
         viewModel.checkToken()
     }
     

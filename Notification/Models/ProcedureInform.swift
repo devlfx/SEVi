@@ -12,7 +12,7 @@ struct ProcedureInform:Codable {
     let idProcedimiento: Int
     let idInforme:Int
     let procedimiento: Procedure
-    let procedimientoAutorizacion:[PrecedurAuthorization]?
+    let procedimientoAutorizacion:[ProcedurAuthorization]?
 }
 
 

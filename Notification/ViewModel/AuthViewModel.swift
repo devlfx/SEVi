@@ -55,7 +55,7 @@ class AuthViewModel:ObservableObject{
     
     func checkToken() {
         let token = try? KeychainStore.common.getItem(forKey: "notification.apitoken")
-        if token != nil {
+        if let _ = token {
             self.isSignedIn = true
         }
     }

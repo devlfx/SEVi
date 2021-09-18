@@ -11,25 +11,47 @@ import SwiftUI
 struct PrincipalView: View {
     
     @StateObject var stayFeedViewModel = StayFeedViewModel()
-    
+    private var gradientColors = Gradient(colors: [Color.white,Color.offWhite,Color("PrincipalL")])
     var body: some View {
-        VStack{
-                List{
+        ZStack{
+            
+            Color.offWhite
+                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            
+            ScrollView(.vertical, showsIndicators: false){
+                LazyVStack(spacing:15){
                     ForEach(stayFeedViewModel.stays,id:\.idEstancia) { stay in
                         NavigationLink(
-                            destination: StayDetailView(stayId: stay.idEstancia!),
+//                            destination: StayDetailView(stay: stay),
+                            destination:DetailContainerView(stay: stay),
                             label: {
                                 StayCellView(stay: stay)
+                            
+                            
+                            
                             })
                         
                     }
                 }
+                .padding(.horizontal)
+                
+            }
         }
-        .onAppear(perform:fetch).navigationBarTitle("Estancias")
+        
+            //.background(linearGradient)
+        .onAppear(perform:fetch)
+        .navigationTitle("Estancias")
+        .toolbar {
+            Button("Help") {
+                print("Help tapped!")
+            }
+        }
+        
     }
     
     
     private func fetch() {
+            print("fetching")
             stayFeedViewModel.getStays()
     }
 }
