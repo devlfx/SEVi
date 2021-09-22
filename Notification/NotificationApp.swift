@@ -17,8 +17,10 @@ struct NotificationApp: App {
     var body: some Scene {
         WindowGroup {
             let vm = AuthViewModel()
+            
             ContentView()
                 .environmentObject(vm)
+                .environmentObject(appDelegate.notificationDelegate)
                 .environment(\.locale, Locale(identifier: Locale.current.languageCode ?? "en"))
         }
     }

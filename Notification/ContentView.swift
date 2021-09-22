@@ -25,7 +25,7 @@ struct ContentView: View {
             }
             
             
-        }.onAppear(perform: checkToken)
+        }.onAppear(perform: checkToken).navigationViewStyle(StackNavigationViewStyle())
     }
     
     

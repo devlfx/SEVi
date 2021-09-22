@@ -10,11 +10,15 @@ import UIKit
 import UserNotifications
 
 class AppDelegate: NSObject, UIApplicationDelegate {
+    
+    let notificationDelegate = NotificationDelegate()
+    
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions:
           [UIApplication.LaunchOptionsKey: Any]?
       ) -> Bool {
+        // Register for notifications
         registerForPushNotifications(application: application)
         return true
     }
@@ -22,8 +26,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(
       _ application: UIApplication,
       didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-      let token = deviceToken.reduce("") { $0 + String(format: "%02x", $1) }
-      print(token)
+        sendPushNotificationDetails(using:deviceToken)
+      
     }
     
     func application(
@@ -33,4 +37,5 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
 
 
+    
 }
