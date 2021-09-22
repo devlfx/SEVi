@@ -29,9 +29,11 @@ struct RestClient{
     
     func execute<T>(_ request: URLRequest,
                     decodingType: T.Type,
-                    queue: DispatchQueue = .main,
+                    executionQueue: DispatchQueue = DispatchQueue.global(qos:.userInitiated),
+                    recieverQueue: DispatchQueue = .main,
                     retries: Int = 0) -> AnyPublisher<T, Error> where T: Decodable {
         return session.dataTaskPublisher(for: request)
+            .subscribe(on: executionQueue )
             .tryMap {
                 let response = $0.response as? HTTPURLResponse
                 guard let responseH = response, StatusCode(rawValue: responseH.statusCode) == StatusCode.success else {
@@ -40,23 +42,25 @@ struct RestClient{
                 return $0.data
             }
             .decode(type: T.self, decoder: decoder)
-            .receive(on: queue)
+            .receive(on: recieverQueue)
             .retry(retries)
             .eraseToAnyPublisher()
     }
     
     
     func execute(_ request: URLRequest,
-                    queue: DispatchQueue = .main,
+                    executionQueue: DispatchQueue = DispatchQueue.global(qos:.userInitiated),
+                    recieverQueue: DispatchQueue = .main,
                     retries: Int = 0) -> AnyPublisher<Void, Error> {
 
         return session.dataTaskPublisher(for: request)
+            .subscribe(on: executionQueue )
             .tryMap {
                 guard let response = $0.response as? HTTPURLResponse, StatusCode(rawValue: response.statusCode) == StatusCode.success else {
                     throw ResponseError.invalidResponse
                 }
             }
-            .receive(on: queue)
+            .receive(on: recieverQueue)
             .retry(retries)
             .eraseToAnyPublisher()
     }

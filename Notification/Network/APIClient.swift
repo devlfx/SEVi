@@ -49,7 +49,7 @@ struct ApiClient{
 
         let request = builder.builURLRequest()
         guard let request = request else { return Fail(error: RequestError.badURL("Bad URL")).eraseToAnyPublisher() }
-        return client.execute(request, decodingType: TokenResponse.self, queue: .main)
+        return client.execute(request, decodingType: TokenResponse.self, recieverQueue: .main)
     }
     
     
@@ -60,7 +60,7 @@ struct ApiClient{
         let request = builder.builURLRequest()
         
         guard let request = request else { return Fail(error: RequestError.badURL("Bad URL")).eraseToAnyPublisher() }
-        return client.execute(request, decodingType: [Stay].self, queue: .main)
+        return client.execute(request, decodingType: [Stay].self, recieverQueue: .main)
     }
     
     
@@ -72,7 +72,7 @@ struct ApiClient{
         let request = builder.builURLRequest()
         
         guard let request = request else { return Fail(error: RequestError.badURL("Bad URL")).eraseToAnyPublisher() }
-        return client.execute(request, decodingType: Stay?.self, queue: .main)
+        return client.execute(request, decodingType: Stay?.self, recieverQueue: .main)
     }
     
     
@@ -82,7 +82,7 @@ struct ApiClient{
         let builder = RequestBuilder(url: url, headers: headers, reqBody: nil, httpMethod: HTTPMethod.GET)
         let request = builder.builURLRequest()
         guard let request = request else { return Fail(error: RequestError.badURL("Bad URL")).eraseToAnyPublisher() }
-        return client.execute(request, decodingType: Inform?.self, queue: .main)
+        return client.execute(request, decodingType: Inform?.self, recieverQueue: .main)
         
     }
     
