@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct InformDetailView: View {
+    @EnvironmentObject var notificationDelegate: NotificationDelegate
     @StateObject var informVM = InformDetailViewModel()
     @State private var actionSheetData: ActionSheetData? = nil
-    let informe: Inform
+    let idInforme: Int
 
     
-    init(inform:Inform) {
-        self.informe = inform
+    init(informId:Int) {
+        self.idInforme = informId
     }
     
     var body: some View {
@@ -78,6 +79,10 @@ struct InformDetailView: View {
             }
         }.padding()
         .onAppear(perform:getInform)
+        .onDisappear{
+            print("dissapear")
+            notificationDelegate.isInformPresented = false
+        }
         .actionSheet(item: $actionSheetData) {
             data in
             createProcedureSheet(data: data)
@@ -97,7 +102,7 @@ struct InformDetailView: View {
     
     func getInform() {
         print("performin")
-        informVM.getInformDetails(informId: informe.idInforme!)
+        informVM.getInformDetails(informId: idInforme)
             
     }
     
@@ -107,9 +112,13 @@ struct InformDetailView: View {
     
 }
 
+
+
+
+
 struct InformDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        InformDetailView(inform: Inform.exampleInform())
+        InformDetailView(informId: 1)
     }
 }
 

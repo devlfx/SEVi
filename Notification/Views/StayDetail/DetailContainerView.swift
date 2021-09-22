@@ -19,7 +19,7 @@ struct DetailContainerView: View {
             
             let topEdge  = proxy.safeAreaInsets.top
             
-            StayDetail2View(topEdge: topEdge,stay: stay)
+            StayDetailView(topEdge: topEdge,stay: stay)
         }.ignoresSafeArea(.all,edges: .top)
     }
 }

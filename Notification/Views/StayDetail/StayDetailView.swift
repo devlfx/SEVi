@@ -92,9 +92,11 @@ struct StayDetailView: View {
                     VStack(spacing:15) {
                         ForEach(informes,id:\.idInforme){
                             inform in
+                            if let id = inform.idInforme{
+                                
                             
-                            NavigationLink( destination: InformDetailView(inform: inform),label: { InformCellView(inform: inform) })
-                            
+                            NavigationLink( destination: InformDetailView(informId: id),label: { InformCellView(inform: inform) })
+                            }
                         }
                     }.padding(.horizontal).zIndex(0.0)
                 }
@@ -114,8 +116,8 @@ struct StayDetailView: View {
     
     func getTopBarTitleOpacity() -> CGFloat{
         let progress = -(offset + 70) / (maxHeight - ( 80 + topEdge ) )
-        
         return progress
+        
     }
     
     func getHeaderHeight() -> CGFloat {

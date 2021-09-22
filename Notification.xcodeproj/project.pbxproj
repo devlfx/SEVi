@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3003F26626F7FA77000A0183 /* NotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3003F26526F7FA77000A0183 /* NotificationDelegate.swift */; };
 		3024791A26E9CC2D00D29020 /* InformDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3024791926E9CC2D00D29020 /* InformDetailViewModel.swift */; };
 		302C0B4A26D4B45C004007FF /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302C0B4926D4B45C004007FF /* APIClient.swift */; };
 		302C0B4D26D4C004004007FF /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302C0B4C26D4C004004007FF /* Credentials.swift */; };
@@ -59,6 +60,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3003F26526F7FA77000A0183 /* NotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDelegate.swift; sourceTree = "<group>"; };
 		3024791926E9CC2D00D29020 /* InformDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformDetailViewModel.swift; sourceTree = "<group>"; };
 		302C0B4926D4B45C004007FF /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		302C0B4C26D4C004004007FF /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
@@ -157,7 +159,7 @@
 				3059A49B26CB83BD003AD682 /* Encodable.swift */,
 				3095404C26E09BC40095D0A3 /* APNUploads.swift */,
 				30693F6126F3294300B72B81 /* LinearGradient.swift */,
-				30693F7026F3E87E00B72B81 /* CornerRadiusView.swift */,
+				3003F26526F7FA77000A0183 /* NotificationDelegate.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -174,6 +176,7 @@
 		30693F6826F3D6AF00B72B81 /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
+				30693F7026F3E87E00B72B81 /* CornerRadiusView.swift */,
 				30693F6926F3D80900B72B81 /* OffsetModifier.swift */,
 			);
 			path = Modifiers;
@@ -233,9 +236,9 @@
 				308CE9E3269F9D0C002B39E0 /* NotificationApp.swift */,
 				308CE9E5269F9D0C002B39E0 /* ContentView.swift */,
 				308CE9E7269F9D0D002B39E0 /* Assets.xcassets */,
-				308CE9EC269F9D0D002B39E0 /* Info.plist */,
 				308CE9E9269F9D0D002B39E0 /* Preview Content */,
 				305AA8C826A0C05D0032E187 /* AppDelegate.swift */,
+				308CE9EC269F9D0D002B39E0 /* Info.plist */,
 				305AA8CA26A141B30032E187 /* payload.apns */,
 			);
 			path = Notification;
@@ -410,6 +413,7 @@
 				304F0E0A26E3F0C0008A3020 /* StayDetailViewModel.swift in Sources */,
 				30693F6426F3BEBC00B72B81 /* StayDetailView.swift in Sources */,
 				3059A49926CB8362003AD682 /* RequestBuilder.swift in Sources */,
+				3003F26626F7FA77000A0183 /* NotificationDelegate.swift in Sources */,
 				3095BAD126DCA6CB00AB2526 /* Patient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct PrincipalView: View {
-    
+    @EnvironmentObject var notificationDelegate: NotificationDelegate
     @StateObject var stayFeedViewModel = StayFeedViewModel()
     private var gradientColors = Gradient(colors: [Color.white,Color.offWhite,Color("PrincipalL")])
     var body: some View {
@@ -21,8 +21,8 @@ struct PrincipalView: View {
             ScrollView(.vertical, showsIndicators: false){
                 LazyVStack(spacing:15){
                     ForEach(stayFeedViewModel.stays,id:\.idEstancia) { stay in
+                        
                         NavigationLink(
-//                            destination: StayDetailView(stay: stay),
                             destination:DetailContainerView(stay: stay),
                             label: {
                                 StayCellView(stay: stay)
@@ -36,11 +36,19 @@ struct PrincipalView: View {
                 .padding(.horizontal)
                 
             }
+            
+            NavigationLink(
+                destination: InformDetailView(informId: notificationDelegate.idInform),
+              isActive: $notificationDelegate.isInformPresented) {
+              EmptyView()
+            }
+            
         }
         
             //.background(linearGradient)
         .onAppear(perform:fetch)
         .navigationTitle("Estancias")
+        
         .toolbar {
             Button("Help") {
                 print("Help tapped!")
