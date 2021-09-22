@@ -37,8 +37,10 @@ struct InformCellView: View {
                         .font(.headline)
                         .fontWeight(.semibold)
                         .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                        .foregroundColor(Color("PrincipalL"))
                         .lineLimit(2)
                         .padding(/*@START_MENU_TOKEN@*/.bottom, 2.0/*@END_MENU_TOKEN@*/)
+                        
                     
                     
                     if let responsableMedico = inform.responsableMedico {

@@ -19,12 +19,11 @@ struct StayCellView: View {
       
                 
             HStack {
-                Image(systemName:"person.fill")
+                Image("p1")
                     .resizable()
                     .scaledToFit()
                     .frame(height:70)
-                    .cornerRadius(15)
-                    .foregroundColor(Color("Principal"))
+                    .clipShape(Circle())
                 
                 Spacer(minLength: 2)
                 

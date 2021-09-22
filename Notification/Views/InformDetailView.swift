@@ -19,65 +19,114 @@ struct InformDetailView: View {
     }
     
     var body: some View {
-        
-        VStack(alignment: .leading,spacing:15){
+        ScrollView(.vertical,showsIndicators: false){
+            
+            VStack(spacing:15){
             if let inform = informVM.inform {
-                
-                Text(inform.titulo)
-                    .font(.title)
-                    .fontWeight(.semibold)
-                    .frame(maxWidth:.infinity)
-                    .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
-                
-                
-                Text(inform.fecha,style: .date)
-                    .font(.title2)
-                    .multilineTextAlignment(.trailing)
-                
-                
-                
-                
-                if let responsableMedico = inform.responsableMedico {
-                    Text("Responsable Medico: \(responsableMedico.fullName())")
-                        .font(.title3)
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.5)
+                // First Card details of stay
+                VStack(alignment: .center, spacing: 15) {
                     
-                }
+                    
+                    Text(inform.titulo)
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .multilineTextAlignment(.center)
+                        .layoutPriority(1)
+                    HStack{
+                        Text("Fecha:")
+                            .font(.body)
+                            .fontWeight(.bold)
+                            .lineLimit(2)
+                            .minimumScaleFactor(0.5)
+                        Spacer(minLength: 2)
+                        Text(inform.fecha,style: .date)
+                            .font(.subheadline)
+                            .minimumScaleFactor(0.5)
+                            .multilineTextAlignment(.trailing)
+                    }
+                    
+                    
+                    
+                    
+                    
+                    if let responsableMedico = inform.responsableMedico {
+                        HStack{
+                        Text("Responsable Medico:")
+                            .font(.body)
+                            .fontWeight(.bold)
+                            .lineLimit(2)
+                            .minimumScaleFactor(0.5)
+                            
+                            Spacer(minLength: 2)
+                            
+                        Text(responsableMedico.fullName())
+                            .font(.body)
+                            .minimumScaleFactor(0.5)
+                            .multilineTextAlignment(.trailing)
+                        }
+                    }
+                    
+                    
+
+                }.padding().background(
+                    RoundedRectangle(cornerRadius: 25.0, style: .continuous)
+                        .fill(Color.offWhite)
+                        .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
+                        .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
+                )
+                
+                // Second Cart Inform's description
+                VStack(alignment:.center,spacing:15){
+                    
+                    Text("Descripción:")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .frame(maxWidth: .infinity)
+                    Text(inform.descripcion)
+                        .font(.body)
+                        .fontWeight(.semibold)
+                        .multilineTextAlignment(.leading)
+                }.padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 25.0, style: .continuous)
+                        .fill(Color.offWhite)
+                        .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
+                        .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
+                )
                 
                 
-                Text("Descripción:")
-                    .font(.title3)
-                    .fontWeight(.bold)
-                Text(inform.descripcion)
-                    .font(.body)
-                    .fontWeight(.semibold)
-                    .multilineTextAlignment(.leading)
                 
                 if let procedureInforms = inform.procedimientoInforme,procedureInforms.count > 0 {
-                    VStack{
-                        Text("Algunos Procedimientos requieren su atención")
-                            .font(.title3)
-                            .fontWeight(.semibold)
-                        List{
-                            Section(header: Text("Procedimientos")){
+                    Text("Algunos procedimientos requieren su atención")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                        .lineLimit(2)
+                    
+                    VStack(alignment:.center,spacing:15){
+                        
+                        
+                           
                                 ForEach(procedureInforms, id:\.idProcedimiento) { procedureInform in
                                     ProcedureCellView(procedureInform: procedureInform)
                                     .onTapGesture{
                                         self.actionSheetData = ActionSheetData(title: "example", message: "example")
                                     }
                                 }
-                            }
-                        }
+                            
+
                     }
+                    
+                    
                     
                 } else {
                     Text("No existen procedimientos relacionados con este informe")
                 }
                 
-                Spacer()
+
             }
-        }.padding()
+        }
+            .padding()
+            
         .onAppear(perform:getInform)
         .onDisappear{
             print("dissapear")
@@ -86,7 +135,10 @@ struct InformDetailView: View {
         .actionSheet(item: $actionSheetData) {
             data in
             createProcedureSheet(data: data)
-        }
+        }.navigationTitle("Inform Detail").navigationBarTitleDisplayMode(.inline)
+        }.background(Rectangle()
+                        .fill(Color.offWhite)
+                        .ignoresSafeArea(.all))
     }
     
     
@@ -118,7 +170,7 @@ struct InformDetailView: View {
 
 struct InformDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        InformDetailView(informId: 1)
+        InformDetailView(informId: 103)
     }
 }
 

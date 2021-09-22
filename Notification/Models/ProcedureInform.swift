@@ -11,6 +11,7 @@ struct ProcedureInform:Codable {
     var idProcecimientoInforme: Int?
     let idProcedimiento: Int
     let idInforme:Int
+    let justificacion:String
     let procedimiento: Procedure
     let procedimientoAutorizacion:[ProcedurAuthorization]?
 }

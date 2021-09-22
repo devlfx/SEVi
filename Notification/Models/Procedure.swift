@@ -11,5 +11,6 @@ struct Procedure: Codable{
     var idProcedimiento: Int?
     let nombre: String
     let costo: Decimal
+    let descripcion: String
     let duracionAproximada: Decimal
 }
