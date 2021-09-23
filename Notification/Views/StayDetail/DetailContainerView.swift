@@ -26,6 +26,6 @@ struct DetailContainerView: View {
 
 struct DetailContainerView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailContainerView(stay:Stay.exampleStay())
+        DetailContainerView(stay:Stay.example())
     }
 }

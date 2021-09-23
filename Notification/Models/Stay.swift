@@ -20,9 +20,9 @@ struct Stay:  Codable{
 
 
 
-    public static func exampleStay()->Stay{
+    public static func example()->Stay{
         let hospital = Hospital(idHospital: 1, nombre: "Lorem ipsum", direccion: "Sed ut perspiciatis unde omnis iste natus", telefono: "5539244851")
-        let patient = Patient(idPaciente: 1, identificador: "OEGL960316HDFRNS04", nombre: "Luis", apellido1: "O", apellido2: "G")
+        let patient = Patient(idPaciente: 1, identificador: "OEGL960316HDFRNS04", nombre: "Luis Abraham", apellido1: "Ortega", apellido2: "Gonzalez")
         let stay = Stay(idEstancia: 1, fechaIngreso: Date(), idPaciente: 1, idHospital: 1, identificador: "q39202rad",paciente: patient, hospital: hospital)
         return stay
     }

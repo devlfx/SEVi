@@ -63,6 +63,6 @@ struct StayCellView_Previews: PreviewProvider {
     
     static var previews: some View {
         
-        StayCellView(stay: Stay.exampleStay())
+        StayCellView(stay: Stay.example())
     }
 }

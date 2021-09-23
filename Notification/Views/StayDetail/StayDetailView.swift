@@ -12,8 +12,9 @@ struct StayDetailView: View {
     @State var offset: CGFloat = 0
     @Environment(\.presentationMode) var presentationMode
     @StateObject var stayDetailVM = StayDetailViewModel()
-    
+    // Name for coordinate space
     let coordinateName = "scrollStayDetail"
+    // Max height for the header view
     let maxHeight = UIScreen.main.bounds.height / 2.3
     var topEdge: CGFloat
     var stay: Stay
@@ -89,7 +90,7 @@ struct StayDetailView: View {
                 .offset(y:-offset)
                 .zIndex(1.0)
                 if let stay = stayDetailVM.stay, let informes = stay.informes{
-                    VStack(spacing:15) {
+                    LazyVStack(spacing:15) {
                         ForEach(informes,id:\.idInforme){
                             inform in
                             if let id = inform.idInforme{
@@ -147,13 +148,16 @@ struct StayDetailView: View {
 struct StayDetailView_Previews: PreviewProvider {
     static var previews: some View {
 //        DetailContainerView()
-        StayDetailView(topEdge:50,stay:Stay.exampleStay())
+        StayDetailView(topEdge:50,stay:Stay.example())
     }
 }
 
 
 
-
+/**
+ View with information in headers
+ 
+ */
 struct TopBar: View {
     var topEdge: CGFloat
     @Binding var offset: CGFloat
@@ -164,7 +168,7 @@ struct TopBar: View {
         VStack(alignment:.center, spacing:15){
             Image("p1").resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: 100, height: 100)
+                .frame(width: 80, height: 80)
                 .clipShape(Circle())
             
             Text(stay.paciente.fullName())
