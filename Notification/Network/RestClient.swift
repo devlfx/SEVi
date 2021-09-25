@@ -41,7 +41,11 @@ struct RestClient{
                         let json = try? JSONSerialization.jsonObject(with: $0.data, options: .allowFragments)
                         debugPrint(json ?? "")
                     #endif
-                    throw ResponseError.invalidResponse
+                    if let response = $0.response as? HTTPURLResponse {
+                        throw StatusCode.getError(code: response.statusCode)
+                    } else {
+                        throw RequestError.noResponse("No hubo respuesta")
+                    }
                 }
                 return $0.data
             }
@@ -65,7 +69,11 @@ struct RestClient{
                     let json = try? JSONSerialization.jsonObject(with: $0.data, options: .allowFragments)
                     debugPrint(json ?? "")
                     #endif
-                    throw ResponseError.invalidResponse
+                    if let response = $0.response as? HTTPURLResponse {
+                        throw StatusCode.getError(code: response.statusCode)
+                    } else {
+                        throw RequestError.noResponse("No hubo respuesta")
+                    }
                 }
             }
             .receive(on: recieverQueue)

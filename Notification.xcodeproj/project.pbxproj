@@ -48,7 +48,6 @@
 		30A947D126DDF4DA00B9A162 /* Hospital.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A947D026DDF4DA00B9A162 /* Hospital.swift */; };
 		30AC3D4726BDBC1A0099C4B7 /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC3D4626BDBC1A0099C4B7 /* StatusCode.swift */; };
 		30AC3D4926BDBC620099C4B7 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC3D4826BDBC620099C4B7 /* RequestError.swift */; };
-		30AC3D4B26BDC0330099C4B7 /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC3D4A26BDC0330099C4B7 /* ResponseError.swift */; };
 		30ADF51D26D5FE5000B55C87 /* APIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ADF51C26D5FE5000B55C87 /* APIConfig.swift */; };
 		30ADF52026D6191600B55C87 /* KeychainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ADF51F26D6191600B55C87 /* KeychainError.swift */; };
 		30ADF52226D6193300B55C87 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ADF52126D6193300B55C87 /* KeychainStore.swift */; };
@@ -106,7 +105,6 @@
 		30A947D026DDF4DA00B9A162 /* Hospital.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hospital.swift; sourceTree = "<group>"; };
 		30AC3D4626BDBC1A0099C4B7 /* StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCode.swift; sourceTree = "<group>"; };
 		30AC3D4826BDBC620099C4B7 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
-		30AC3D4A26BDC0330099C4B7 /* ResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseError.swift; sourceTree = "<group>"; };
 		30ADF51C26D5FE5000B55C87 /* APIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfig.swift; sourceTree = "<group>"; };
 		30ADF51F26D6191600B55C87 /* KeychainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainError.swift; sourceTree = "<group>"; };
 		30ADF52126D6193300B55C87 /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
@@ -281,7 +279,6 @@
 			children = (
 				30AC3D4626BDBC1A0099C4B7 /* StatusCode.swift */,
 				30AC3D4826BDBC620099C4B7 /* RequestError.swift */,
-				30AC3D4A26BDC0330099C4B7 /* ResponseError.swift */,
 				3059A49626CB822A003AD682 /* HTTPMethod.swift */,
 				3059A49826CB8362003AD682 /* RequestBuilder.swift */,
 				30D9802B26CCCED1000E88F3 /* RestClient.swift */,
@@ -419,7 +416,6 @@
 				307D867626FF1FB400127F58 /* ProcedureAuth.swift in Sources */,
 				30ADF52226D6193300B55C87 /* KeychainStore.swift in Sources */,
 				30ADF51D26D5FE5000B55C87 /* APIConfig.swift in Sources */,
-				30AC3D4B26BDC0330099C4B7 /* ResponseError.swift in Sources */,
 				30693F6726F3C4B000B72B81 /* DetailContainerView.swift in Sources */,
 				30693F6F26F3E7B700B72B81 /* RoundedCorner.swift in Sources */,
 				304F0E1626E54740008A3020 /* InformCellView.swift in Sources */,
