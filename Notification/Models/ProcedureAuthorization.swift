@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ProcedurAuthorization: Codable{
+struct ProcedureAuthorization: Codable{
     var idProcedimientoAutorizacion: Int?
     let idEstancia: Int
     let idResponsable: Int

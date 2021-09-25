@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+
+/**
+ View for the detail of the of the inform
+ 
+ */
 struct InformDetailView: View {
     @EnvironmentObject var notificationDelegate: NotificationDelegate
     @StateObject var informVM = InformDetailViewModel()
@@ -133,7 +138,7 @@ struct InformDetailView: View {
         }
         .sheet(item: self.$sheetPData) {
             sheetPData in
-            ProcedureInformDetail(procedureInform: sheetPData.procedureInform)
+            ProcedureInformDetail(informVM: self.informVM, procedureInform: sheetPData.procedureInform)
         }
 //        .actionSheet(item: $actionSheetData) {
 //            data in

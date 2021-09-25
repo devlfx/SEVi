@@ -69,8 +69,8 @@ struct ApiClient{
         let url = APIConfig.shared.host+"/estancia/\(stayId)"
         let headers = commonHeaders(requiresAuth: true)
         let builder = RequestBuilder(url: url, headers: headers, reqBody: nil, httpMethod: HTTPMethod.GET)
-        let request = builder.builURLRequest()
         
+        let request = builder.builURLRequest()
         guard let request = request else { return Fail(error: RequestError.badURL("Bad URL")).eraseToAnyPublisher() }
         return client.execute(request, decodingType: Stay?.self, recieverQueue: .main)
     }
@@ -80,11 +80,24 @@ struct ApiClient{
         let url = APIConfig.shared.host+"/inform/\(informId)"
         let headers = commonHeaders(requiresAuth: true)
         let builder = RequestBuilder(url: url, headers: headers, reqBody: nil, httpMethod: HTTPMethod.GET)
+        
         let request = builder.builURLRequest()
         guard let request = request else { return Fail(error: RequestError.badURL("Bad URL")).eraseToAnyPublisher() }
         return client.execute(request, decodingType: Inform?.self, recieverQueue: .main)
         
     }
+    
+    func postProcedureInformAuth(procedureInformAuth: ProcedureAuth) -> AnyPublisher<Void, Error>{
+        let url = APIConfig.shared.host + "/procedure/authorization"
+        let headers = commonHeaders(requiresAuth: true)
+        let data = procedureInformAuth.encode(with: encoder)
+        let builder = RequestBuilder(url: url, headers: headers, reqBody: data, httpMethod: HTTPMethod.POST)
+        
+        let request = builder.builURLRequest()
+        guard let request = request else { return Fail(error: RequestError.badURL("Bad URL")).eraseToAnyPublisher() }
+        return client.execute(request, recieverQueue: .main)
+    }
+    
     
     
     private func commonHeaders(requiresAuth:Bool = false) -> [String:String]{

@@ -37,6 +37,10 @@ struct RestClient{
             .tryMap {
                 let response = $0.response as? HTTPURLResponse
                 guard let responseH = response, StatusCode(rawValue: responseH.statusCode) == StatusCode.success else {
+                    #if DEBUG
+                        let json = try? JSONSerialization.jsonObject(with: $0.data, options: .allowFragments)
+                        debugPrint(json ?? "")
+                    #endif
                     throw ResponseError.invalidResponse
                 }
                 return $0.data
@@ -57,6 +61,10 @@ struct RestClient{
             .subscribe(on: executionQueue )
             .tryMap {
                 guard let response = $0.response as? HTTPURLResponse, StatusCode(rawValue: response.statusCode) == StatusCode.success else {
+                    #if DEBUG
+                    let json = try? JSONSerialization.jsonObject(with: $0.data, options: .allowFragments)
+                    debugPrint(json ?? "")
+                    #endif
                     throw ResponseError.invalidResponse
                 }
             }

@@ -10,6 +10,10 @@ import SwiftUI
 struct ProcedureInformDetail: View {
     @Environment(\.presentationMode) var presentation
     @State var sheetData: ActionSheetData? = nil
+    @ObservedObject var informVM : InformDetailViewModel
+    
+    
+    
     
     let procedureInform:ProcedureInform
     
@@ -60,7 +64,7 @@ struct ProcedureInformDetail: View {
             HStack(alignment: .center, spacing: 15){
                 Spacer(minLength: 2)
                 Button(action: {
-                    self.sheetData = ActionSheetData(title: "", message: "")
+                    self.sheetData = ActionSheetData(title: "", message: "",idprocedureInform: procedureInform.idProcedimientoInforme ?? 0)
                 }){
                     Text("Autorizar")
                         .foregroundColor(Color.red)
@@ -119,8 +123,15 @@ struct ProcedureInformDetail: View {
     func createProcedureSheet(data: ActionSheetData) -> ActionSheet {
         return ActionSheet(title: Text("Autorizar procedimiento"), message: Text("Está seguro que desea autorizar este procedimiento médico, esta acción no se puede deshacer.")       ,
                     buttons: [
-                        .destructive(Text("Autorizar"), action: { print("Aprobar")
-                            self.presentation.wrappedValue.dismiss()
+                        .destructive(Text("Autorizar"), action: {
+                            
+                            self.informVM.authorizeProcedure(withIdentificator: data.idprocedureInform) {
+                                self.informVM.getInformDetails(informId: self.procedureInform.idInforme)
+                                self.presentation.wrappedValue.dismiss()
+                            }
+                            
+                            
+                            
                             
                         }),
                         .cancel(Text("Cancelar"))
@@ -132,8 +143,9 @@ struct ProcedureInformDetail: View {
 }
 
 struct ProcedureInformDetail_Previews: PreviewProvider {
+    static var vm = InformDetailViewModel()
     static var previews: some View {
-        ProcedureInformDetail(procedureInform: ProcedureInform.example())
+        ProcedureInformDetail(informVM:ProcedureInformDetail_Previews.vm ,procedureInform: ProcedureInform.example())
     }
 }
 
@@ -143,4 +155,5 @@ struct ActionSheetData: Identifiable {
     var id = UUID() // Conform to Identifiable
     let title: String
     let message: String
+    let idprocedureInform: Int
 }
