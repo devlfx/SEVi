@@ -54,11 +54,20 @@ class AuthViewModel:ObservableObject{
     }
     
     func checkToken() {
+
         let token = try? KeychainStore.common.getItem(forKey: "notification.apitoken")
         if let _ = token {
             self.isSignedIn = true
         }
     }
     
+    
+    func logOut() {
+        let status = KeychainStore.common.deleteItem(forKey: "notification.apitoken")
+        if status {
+            self.isSignedIn = false
+        }
+        
+    }
     
 }

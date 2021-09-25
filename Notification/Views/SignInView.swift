@@ -34,7 +34,7 @@ struct SignInView: View {
                 Button(action: {
                     authVM.signIn(email: email, password: password)
                 }, label: {
-                    Text("Sign in")
+                    Text("Enviar")
                     .padding(EdgeInsets(top: 10, leading: 10,
                                             bottom: 10, trailing: 10))
                         .foregroundColor(.white)
@@ -50,7 +50,7 @@ struct SignInView: View {
             
             Spacer()
         }
-        .navigationTitle("Sign in")
+        .navigationTitle("Iniciar Sesión")
     }
         
 }

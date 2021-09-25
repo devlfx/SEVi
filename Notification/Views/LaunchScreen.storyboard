@@ -29,13 +29,6 @@
                                     <constraint firstAttribute="height" constant="100" id="wHA-mK-dik"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEVi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWp-1t-TRw">
-                                <rect key="frame" x="170.5" y="514" width="73" height="41"/>
-                                <color key="tintColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="35"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -44,8 +37,6 @@
                             <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="20" symbolic="YES" id="SfN-ll-jLj"/>
                             <constraint firstAttribute="bottom" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="20" id="Y44-ml-fuU"/>
                             <constraint firstItem="m9C-bQ-yqP" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="eqx-k2-Xyy"/>
-                            <constraint firstItem="SWp-1t-TRw" firstAttribute="top" secondItem="m9C-bQ-yqP" secondAttribute="bottom" constant="16" id="oPU-0b-gpd"/>
-                            <constraint firstItem="SWp-1t-TRw" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="uu7-UM-vEf"/>
                             <constraint firstItem="m9C-bQ-yqP" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="waB-TG-vyd"/>
                         </constraints>
                     </view>

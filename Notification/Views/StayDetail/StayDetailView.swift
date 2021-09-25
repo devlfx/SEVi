@@ -24,6 +24,7 @@ struct StayDetailView: View {
         self.topEdge = topEdge
         self.stay = stay
         stayId = stay.idEstancia ?? 0
+        
     }
     
     

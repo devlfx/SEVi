@@ -9,14 +9,19 @@ import SwiftUI
 
 
 struct PrincipalView: View {
+    @EnvironmentObject var authVM: AuthViewModel
     @EnvironmentObject var notificationDelegate: NotificationDelegate
     @StateObject var stayFeedViewModel = StayFeedViewModel()
-    private var gradientColors = Gradient(colors: [Color.white,Color.offWhite,Color("PrincipalL")])
+
+  
+    
     var body: some View {
         ZStack{
             
-            Color.offWhite
-                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            Rectangle()
+                .fill(Color.offWhite)
+                .ignoresSafeArea(.all, edges: [.bottom,.leading,.trailing])
+                
             
             ScrollView(.vertical, showsIndicators: false){
                 LazyVStack(spacing:15){
@@ -47,12 +52,17 @@ struct PrincipalView: View {
         
             //.background(linearGradient)
         .onAppear(perform:fetch)
-        .navigationTitle("Estancias")
+        .navigationTitle(Text("Estancias"))
         
         .toolbar {
-            Button("Help") {
-                print("Help tapped!")
-            }
+            
+
+            
+            Button(action: {
+                authVM.logOut()
+            }, label: {
+                Text("Salir").foregroundColor(Color("Secondary"))
+            })
         }
         
     }
@@ -69,7 +79,10 @@ struct PrincipalView: View {
 struct PricipalContentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            PrincipalView()
+            let vm = AuthViewModel()
+            let appDelegate = AppDelegate()
+            ContentView().environmentObject(vm)
+                .environmentObject(appDelegate.notificationDelegate)
         }
         
     }
