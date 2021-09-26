@@ -76,15 +76,14 @@ struct StayDetailView: View {
                                     .font(.body.bold())
                             })
                         }
+                        
+                        .padding(.top,40)
                         .padding(.horizontal)
                         .frame(height: 80 )
                         .foregroundColor(.white)
                         .padding(.top,topEdge)
                         , alignment: .top
                     )
-                        
-                    
-                    
                 }
                 .frame(height:maxHeight)
                 // this modifier makes we cant move the scroll view up
@@ -149,7 +148,11 @@ struct StayDetailView: View {
 struct StayDetailView_Previews: PreviewProvider {
     static var previews: some View {
 //        DetailContainerView()
-        StayDetailView(topEdge:50,stay:Stay.example())
+//        StayDetailView(topEdge:50,stay:Stay.example())
+        let vm = AuthViewModel()
+        let appDelegate = AppDelegate()
+        ContentView().environmentObject(vm)
+            .environmentObject(appDelegate.notificationDelegate)
     }
 }
 
