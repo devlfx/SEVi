@@ -28,6 +28,8 @@ Features:
  No extra libraries used for this project, probably will to integrate some for this
  
  ## TODO
+  - Implement real logout (right now only ereases the token).
+  - On log out notify device is no longer available to notifications.
   - Create Test Cases.
   - Integrate Sign up in the app.
   - Allow sharing a stay with a QR code.
